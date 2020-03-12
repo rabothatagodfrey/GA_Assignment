@@ -1,0 +1,36 @@
+	 public static int result(int[] coins) {
+		   if(coins.length == 0) {
+			   return 0;
+		   }
+		   
+		   for(int i = 1; i < coins.length - 1; i++) {
+			   if(coins[i - 1] != coins[i] && coins[i] != coins[i + 1]) {
+				  coins[i] = coins[i] == 1 ? 0 : 1;
+				  return adjacency(coins);
+			   }
+		   }
+		   
+		   for(int i = 1; i < coins.length - 1; i++) {
+			   if(coins[i - 1] == coins[i] && coins[i] != coins[i + 1]) {
+				  coins[i] = coins[i] == 1 ? 0 : 1;
+				  return adjacency(coins);
+			   }else if(coins[i - 1] != coins[i] && coins[i] == coins[i + 1]) {
+						  coins[i] = coins[i] == 1 ? 0 : 1;
+						  return adjacency(coins);
+					   }  
+		   }
+	     coins[0]=coins[0] == 1?0:1;
+	     return adjacency(coins);
+	   }
+	     
+	     private static int adjacency(int[] A) {
+	    	 int adj = 0;
+	    	 
+	    	 for(int i = 1; 1 < A.length; i++) {
+	    		 if(A[i - 1] == A[i]) {
+	    		   adj++; 
+	    		 }
+	    	 }
+	    	 return adj;
+	     }
+		   
